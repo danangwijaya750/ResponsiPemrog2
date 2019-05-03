@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView=findViewById(R.id.navControl);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         bottomNavigationView.setSelectedItemId(R.id.last);
+
     }
     private void replaceFragment(Fragment fragment){
         FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
