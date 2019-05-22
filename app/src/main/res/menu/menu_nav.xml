@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/last" android:title="Last Match"
+    <item android:id="@+id/last"
+        android:icon="@drawable/ic_now"
+        android:title="Now Playing"
 
         />
-    <item android:id="@+id/next" android:title="Next Match"/>
+    <item android:id="@+id/next"
+        android:icon="@drawable/ic_upcoming"
+        android:title="Up Coming"/>
 </menu>

@@ -1,12 +1,15 @@
 package com.dngwjy.portal.presentation.detail;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +27,12 @@ public class DetailFilmActivity extends AppCompatActivity implements DetailView 
     private DetailPresenter presenter;
     private DetailMovie detailMovie;
     CircularImageView poster;
+    ImageView imek;
     TextView title, tagline, rating, language, runtime, overview, release;
     SwipeRefreshLayout refreshLayout;
     LinearLayout contentDetail;
     Movie movie;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +43,7 @@ public class DetailFilmActivity extends AppCompatActivity implements DetailView 
     private void initiations(){
         presenter=new DetailPresenter(this);
         movie=getIntent().getParcelableExtra("data");
-        poster = findViewById(R.id.image_detail_movie);
+        imek = findViewById(R.id.image_detail_movie);
         title = findViewById(R.id.tv_detail_title_movie);
         tagline = findViewById(R.id.tv_detail_tagline);
         language = findViewById(R.id.tv_detail_language);
@@ -49,6 +54,7 @@ public class DetailFilmActivity extends AppCompatActivity implements DetailView 
         refreshLayout=findViewById(R.id.detail_swipe_refresh);
         contentDetail = findViewById(R.id.content_detail_movie);
         presenter.getData(movie.getId());
+        toolbar = findViewById(R.id.toolbar);
     }
     private void setData(){
 
@@ -60,7 +66,7 @@ public class DetailFilmActivity extends AppCompatActivity implements DetailView 
         title.setText(movie.getTitle());
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w780" + movie.getPosterPath())
-                .into(poster);
+                .into(imek);
         if(state){
             refreshLayout.setRefreshing(true);
             contentDetail.setVisibility(View.GONE);
@@ -80,6 +86,7 @@ public class DetailFilmActivity extends AppCompatActivity implements DetailView 
             overview.setText(detailMovie.getOverview());
             release.setText(detailMovie.getReleaseDate());
             runtime.setText(detailMovie.getRuntime()+"");
+
         }else{
             Toast toast= Toast.makeText(this, "Error dalam mengambil data dari server, Cek koneksi internet anda atau coba beberapa saat lagi", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER,0,0);

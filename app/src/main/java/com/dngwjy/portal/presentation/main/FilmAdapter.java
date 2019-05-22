@@ -45,7 +45,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
         TextView overview;
         ImageView poster;
         View itemView;
-         static final String BASE_IMG_URL ="https://image.tmdb.org/t/p/w92";
+         static final String BASE_IMG_URL ="https://image.tmdb.org/t/p/w780";
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tv_list_movie_title);
